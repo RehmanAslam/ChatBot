@@ -124,6 +124,34 @@ public class SimpleServlet extends HttpServlet {
 		MessageResponse response = null;
 		Map context = new HashMap();
 		
+
+
+		try {   
+			   
+		   	 
+		    String jsonData = readFile("document.json");
+			JSONObject jobj = new JSONObject(jsonData);
+		    sportsArray = jobj.getJSONArray("arabic");
+			
+				
+		   
+		    
+		   
+				
+		     }
+		     
+		     
+				//Ends
+		    catch(Exception e) {
+		    	
+		    	System.out.println("FileNotFound");
+		    	 
+		     }
+		
+
+
+
+
 		try {
 		br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -163,6 +191,7 @@ public class SimpleServlet extends HttpServlet {
 		return response.getEntities().get(0).getValue();
 	}
 
+		
 		public  MessageResponse conversationAPI(String input, Map context) {
 		ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_07_11);
 		// Credentials of Workspace of Conversation
@@ -178,7 +207,25 @@ public class SimpleServlet extends HttpServlet {
 
 		}
 
-
+     public String readFile(String filename) {
+		    
+			String result = "";
+		    
+			try {
+		    
+				BufferedReader br = new BufferedReader(new FileReader(filename));
+		        StringBuilder sb = new StringBuilder();
+		        String line = br.readLine();
+		        while (line != null) {
+		            sb.append(line);
+		            line = br.readLine();
+		        }
+		        result = sb.toString();
+		    } catch(Exception e) {
+		        e.printStackTrace();
+		    }
+		    return result;
+		}
 
 
 	
