@@ -129,9 +129,9 @@ public class SimpleServlet extends HttpServlet {
 		try {   
 			   
 		   	 
-		    String jsonData = readFile("document.json");
+		    String jsonData = readFile("english.json");
 			JSONObject jobj = new JSONObject(jsonData);
-		    sportsArray = jobj.getJSONArray("arabic");
+		    sportsArray = jobj.getJSONArray("english");
 			
 				
 		   
